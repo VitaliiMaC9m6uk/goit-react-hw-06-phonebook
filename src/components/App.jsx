@@ -4,6 +4,7 @@ import ContactForm from "./ContactForm/ContactForm";
 import ListContacts from "./ListContacts/ListContacts";
 import Filter from "./Filter/Filter";
 import { useDispatch, useSelector } from 'react-redux';
+import { contactsSelector } from 'store/contacts/selectors';
 
 export const App = () => {
   // const [contacts, setContacts] = useState(()=>{
@@ -12,7 +13,7 @@ export const App = () => {
 //   );
   const [filter, setFilter] = useState(''); 
 
-  const contacts = useSelector(state => state.contacts);
+  const contacts = useSelector(contactsSelector);
   const dispatch = useDispatch();
   
   const hendleSubmit = e => {

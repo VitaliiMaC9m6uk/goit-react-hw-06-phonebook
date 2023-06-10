@@ -1,8 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Button, Contact, ContactsList } from "./ListContacts.styled";
+import { contactsSelector } from "store/contacts/selectors";
 
 const ListContacts = () => {
-  const contacts = useSelector(state => state.contacts);
+  const contacts = useSelector(contactsSelector);
+  console.log(contacts)
   const dispatch = useDispatch();
   const deleteContact = event => {
     const { id } = event.target;
