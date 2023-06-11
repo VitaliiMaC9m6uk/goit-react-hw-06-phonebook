@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { nanoid } from 'nanoid';
 import ContactForm from "./ContactForm/ContactForm";
 import ListContacts from "./ListContacts/ListContacts";
@@ -12,7 +12,7 @@ export const App = () => {
 // return  JSON.parse(window.localStorage.getItem('contacts'))??[];
 // }    
 //   );
-  const [filter, setFilter] = useState(''); 
+  // const [filter, setFilter] = useState(''); 
 
   const data = useSelector(contactsSelector);
   const dispatch = useDispatch();
@@ -48,9 +48,9 @@ export const App = () => {
     );        
   };
   
-  const hendleSaveFind = ({ target: { value } }) => {
-    setFilter(value);
-  };
+  // const hendleSaveFind = ({ target: { value } }) => {
+  //   setFilter(value);
+  // };
 
   // const hendleFilter = () => {
   //   const filterContacts = data.contacts.filter(contact =>
@@ -59,7 +59,7 @@ export const App = () => {
   //       .indexOf(filter.toLowerCase()) > -1);
   //   return filterContacts;
   // };
-  
+
   // const deleteContact = event => {
   //   const { id } = event.target;
   //   const filterId = contacts.filter(constact => constact.id !== id);
@@ -76,7 +76,7 @@ export const App = () => {
       />
       <h2>Contacts</h2>
       <Filter
-        filter={hendleSaveFind}
+        // filter={hendleSaveFind}
       />
       <ListContacts
         // list={hendleFilter()}
