@@ -20,6 +20,8 @@ const ContactForm = ({submit}) => {
   const hendleSubmit = e => {
     e.preventDefault();
     submit({ name, number });
+    setName('');
+    setNumber('');
   }
   
   return (

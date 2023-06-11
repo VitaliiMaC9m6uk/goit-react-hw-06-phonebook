@@ -1,11 +1,11 @@
-import { useEffect } from 'react';
-import { nanoid } from 'nanoid';
+// import { useEffect } from 'react';
+// import { nanoid } from 'nanoid';
 import ContactForm from "./ContactForm/ContactForm";
 import ListContacts from "./ListContacts/ListContacts";
 import Filter from "./Filter/Filter";
 import { useDispatch, useSelector } from 'react-redux';
 import { contactsSelector } from 'store/contacts/selectors';
-import { addAction } from 'store/contacts/actions';
+import { addContact } from 'store/contacts/contactsSlice';
 
 export const App = () => {
   // const [contacts, setContacts] = useState(()=>{
@@ -14,12 +14,12 @@ export const App = () => {
 //   );
   // const [filter, setFilter] = useState(''); 
 
-  const data = useSelector(contactsSelector);
+  const contacts = useSelector(contactsSelector);
   const dispatch = useDispatch();
   
   const hendleSubmit = e => {
-    if (data) {
-      const filterContacts = data.contacts.filter(
+    if (contacts) {
+      const filterContacts = contacts.filter(
         contact =>
           contact.name.toLocaleLowerCase().indexOf(e.name.toLocaleLowerCase()) >
           -1
@@ -39,13 +39,7 @@ export const App = () => {
     //     },
     //   ];
     // })
-    dispatch(
-      addAction({
-        name: e.name,
-        number: e.number,
-        id: nanoid(),
-      })
-    );        
+    dispatch(addContact(e));        
   };
   
   // const hendleSaveFind = ({ target: { value } }) => {
@@ -65,9 +59,9 @@ export const App = () => {
   //   const filterId = contacts.filter(constact => constact.id !== id);
   //   setContacts([...filterId]);    
   // };
-  useEffect(() => {
-    localStorage.setItem('contacts', JSON.stringify(data.contacts));
-  }, [data]);
+  // useEffect(() => {
+  //   localStorage.setItem('contacts', JSON.stringify(contacts));
+  // }, [contacts]);
   return (
     <div>
       <h1>Phonebook</h1>
