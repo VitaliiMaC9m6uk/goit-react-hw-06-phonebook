@@ -3,10 +3,11 @@ import { initialState } from "./initialState";
 import { addAction, deleteAction } from "./actions";
 
 export const contactsReducer = createReducer(initialState, {
-    [deleteAction]: (state, {payload}) => {
-       state.contacts.filter(
-         constact => constact.id !== payload
-       ); 
+   [deleteAction]: (state, {payload}) => {
+      console.log(payload)
+      state.contacts.filter(
+         ({id}) => id !== payload
+      );       
     },
     [addAction]: (state, {payload}) => {
        state.contacts.push(payload) 

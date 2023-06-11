@@ -1,18 +1,20 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Button, Contact, ContactsList } from "./ListContacts.styled";
 import { contactsSelector } from "store/contacts/selectors";
+import { deleteAction } from "store/contacts/actions";
 
 const ListContacts = () => {
-  const contacts = useSelector(contactsSelector);
-  console.log(contacts)
+  const data = useSelector(contactsSelector);
+  console.log(data)
   const dispatch = useDispatch();
   const deleteContact = event => {
     const { id } = event.target;
-    dispatch({type:'delete',payload:id})
+    console.log(id)
+    dispatch(deleteAction(id));
   }
   return (
     <ContactsList>
-      {contacts.map(contact => (
+      {data.contacts.map(contact => (
         <Contact key={contact.id}>
           {contact.name} : {contact.number}
           <Button id={contact.id} onClick={deleteContact}>
